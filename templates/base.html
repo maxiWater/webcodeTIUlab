@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png')}}">
+{% block title -%}
+{% if title %}
+	<title>TIUlab - {{title}}</title>
+{% else %}
+	<title>TIUlab</title>
+{% endif %}
+{% endblock %}
+</head>
+<body>
+
+{% block content -%}
+	{%- block mainmenu -%}
+<ul class="mainmenu">
+{% for p in menu %}
+<li><a href="{{p.url}}">{{p.title}}</a></li>
+{% endfor %}
+</ul>
+	{% endblock mainmenu -%}
+<div class="clear"></div>
+<div class="content">
+	{% if title -%}
+<h1>{{title}}</h1>
+	{% else -%}
+<div class="tiu_logo"><img src="{{ url_for('static', filename='images/tiu_logo.png') }}"></div>
+<p><h1>&nbsp;TIUlab</h1></p>
+<p>полезные статьи для студентов и преподавателей.</p>
+	{% endif -%}
+{% endblock -%}
+</div>
+</body>
+</html>
